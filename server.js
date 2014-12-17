@@ -4,7 +4,6 @@ var express = require("express");
     http = require("http"),
     server = http.createServer(app),
     io = require('socket.io').listen(server);
-
  
 server.listen(8080);
 console.log('Server running');
@@ -73,7 +72,7 @@ function NewGuid() {
 var usernames = {};
 var rooms = {};
 rooms['Lobby'] = 0;
-
+io.set('log level',0);
 io.sockets.on('connection', function(socket) {
     socket.on('adduser', function(username) {
         socket.username = username;
